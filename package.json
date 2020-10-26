@@ -1,0 +1,15 @@
+{
+  "name": "go-fullstack-alone",
+  "version": "1.0.0",
+  "description": "Create a full stack project on my own",
+  "main": "index.js",
+  "engines": {
+    "node": "12.18.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["fullstack", "betting"],
+  "author": "Jeremy Lavigne",
+  "license": "ISC"
+}
