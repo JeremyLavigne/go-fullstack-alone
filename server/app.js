@@ -1,14 +1,11 @@
 const express = require('express');
+const cors = require('cors')
 
 const app = express();
+app.use(cors());
 
-app.use('/', (req, res, next) => {
-    console.log('request sent.')
-    next();
-});
-
-app.use('/', (req, res, next) => {
-    res.json({mess: "We are fine."})
+app.get('/api/matches', (req, res, next) => {
+    res.json("Oh yes we can! Oh no, it was no waste of time!")
 });
 
 module.exports = app;

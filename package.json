@@ -7,6 +7,7 @@
     "node": "12.18.3"
   },
   "scripts": {
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -14,5 +15,8 @@
     "betting"
   ],
   "author": "Jeremy Lavigne",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "5.3.0"
+  }
 }

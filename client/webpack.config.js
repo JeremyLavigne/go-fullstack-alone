@@ -25,5 +25,12 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     })
-  ]
+  ],
+  devServer: {
+    proxy: {
+      "/api/matches": {
+        target: "http://localhost:3000"
+      }
+    }
+  }
 };
