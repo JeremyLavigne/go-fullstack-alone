@@ -14,7 +14,7 @@ client.on("error", function(error) {
     console.error(error);
 });
 client.on("connect", function(error) {
-    console.log("Connected to Relis");
+    console.log("Connected to Redis");
 });
 
 
@@ -22,36 +22,10 @@ client.on("connect", function(error) {
 app.use(cors());
 app.use(bodyParser.json());
 
-// This retrieve all the keys -> Only way I have to see what is in my db..
-client.keys('*', function(err, reply) {
-         console.log(reply);
-});
-
-// client.get('framework', function(err, reply) {
-//     console.log(reply);
-// });
-
-
 // Routes
-// app.get('/api/matches', (req, res, next) => {
-//     //res.json("Oh yes we can! Oh no, it was no waste of time!")
-//     var redisKey = req.query.redisKey
+const matchesRoutes = require('./routes/matches');
 
-//     client.get(redisKey, function (err, reply) {
-//       if(err){ res.status(400).json(err); }
-//       res.status(200).json(reply);
-//     });
-// });
-
-// app.post('/api/matches', function(req, res){
-//     var redisKey = req.query.redisKey,
-//         redisValue = req.query.redisValue
-//         // assuming value is also a string in URL query string
-  
-//     client.set(redisKey, redisValue, function (err, reply){
-//       res.status(200).send(reply.toString())
-//     });
-// })
+app.use('/api/matches', matchesRoutes);
 
 
 // Deployment
