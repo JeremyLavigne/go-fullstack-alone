@@ -1,30 +1,15 @@
-const redis = require('redis');
-const client = redis.createClient(process.env.REDIS_URL);
+const client = require('redis').createClient(process.env.REDIS_URL);
 const async = require('async');
 
 
-//Here, we need an object like : { id : PL_17/18_m1, teamHome: Man U, teamAway: Chelsea}
-exports.addMatch = (req, res, next) => {
-//   const match = {
-//     key: req.body.key,
-//     teamHome: req.body.teamHome,
-//     teamAway: req.body.teamAway,
-//   };
-  client.set(req.body.key, req.body.object, function (err, reply){
-    if(err){ res.status(400).json(err); }
-    console.log('yep')
-    res.status(201).json({ create: "Yes", what: req.body.object })
-  });
-};
-
 exports.getAllMatches = async (req, res, next) => {
 
-    client.keys('*', function (err, keys) {
+    client.keys('match-*', function (err, keys) {
         if(err){ res.status(400).json(err); }
         if(keys){
             
             async.map(keys, function(key, cb) {
-               client.get(key, function (error, match) {
+               client.HGETALL(key, function (error, match) {
                     if(err){ res.status(400).json(err); }
                     cb(null, {key: key, object: match});
                 }); 
@@ -37,3 +22,39 @@ exports.getAllMatches = async (req, res, next) => {
     });
 
 };
+
+// ============================= Fill the database - POST ==========================
+
+// Only used **ONCE** to fill the database - No routes leading here
+
+// BE CAREFUL, Uncomment this and save file add automatically all objects !
+
+// for (let i = 0; i < 5; i++) {
+//     const key = `match-PL1718-${i}`;
+//     const newMatch = { 
+//         teamHome: `Home Team ${i}`,
+//         teamAway: `Away Team ${i}`,
+//     }
+//     client.hmset(key, newMatch, function (err, reply){
+//         if(err) { console.log(err); }
+//         console.log(key, 'created');
+//     });
+// }
+
+// ============================= Empty the database - DELETE ==========================
+
+// Only used in case of need to empty the database - No routes leading here
+
+// BE CAREFUL, Uncomment this and save file erase all the matching keys !
+
+// client.keys('match-*', function (err, keys) {
+//     if(err){ res.status(400).json(err); }
+//     if(keys){
+        
+//         async.map(keys, function(key) {
+//            client.del(key, function (error, match) {
+//                 if(err){ console.log(err); }
+//             }); 
+//         });       
+//     }
+// });
