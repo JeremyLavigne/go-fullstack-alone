@@ -11,7 +11,7 @@ exports.getAllMatches = async (req, res, next) => {
             async.map(keys, function(key, cb) {
                client.HGETALL(key, function (error, match) {
                     if(err){ res.status(400).json(err); }
-                    cb(null, {key: key, object: match});
+                    cb(null, {key: key, match});
                 }); 
                 
             }, function (err, matches) {
@@ -29,12 +29,13 @@ exports.getAllMatches = async (req, res, next) => {
 
 // BE CAREFUL, Uncomment this and save file add automatically all objects !
 
+// const plMatchesList = require('./temporyDB');
+
+// Just put i < 380 to get the whole championship
+
 // for (let i = 0; i < 5; i++) {
-//     const key = `match-PL1718-${i}`;
-//     const newMatch = { 
-//         teamHome: `Home Team ${i}`,
-//         teamAway: `Away Team ${i}`,
-//     }
+//     const key = `match-PL1718-${i+1}`;
+//     const newMatch = plMatchesList[i];
 //     client.hmset(key, newMatch, function (err, reply){
 //         if(err) { console.log(err); }
 //         console.log(key, 'created');

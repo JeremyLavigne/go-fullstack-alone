@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import matchesService from '../services/matches'
 
+import MatchLine from './MatchLine'
+
 const App = () => {
 
     const [ matches, setMatches ] = useState(null);
@@ -22,7 +24,11 @@ const App = () => {
                 Get All Matches.
             </button>
 
-            {matches ? matches.map(match => <li key={match.key}>{match.key} - {match.object.teamHome} vs {match.object.teamAway}</li>) : null}
+            {matches 
+                ? matches.map(obj => 
+                    <MatchLine key={obj.key} match={obj.match} />)
+                : null
+            }
             
         </div>
     )
