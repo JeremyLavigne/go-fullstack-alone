@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=production node server.js",
     "dev": "cross-env NODE_ENV=development concurrently \"nodemon server.js\" \"cd client && npm run dev\" ",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "test": "cross-env NODE_ENV=test jest --verbose --runInBand --detectOpenHandles"
+    "test": "cross-env NODE_ENV=test jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -29,11 +29,13 @@
     "concurrently": "5.3.0",
     "connect-redis": "5.0.0",
     "cors": "2.8.5",
+    "done": "1.1.7",
     "dotenv": "8.2.0",
     "eslint-plugin-jest": "24.1.0",
     "eslint-plugin-react": "7.21.5",
     "express": "4.17.1",
     "ioredis": "4.19.0",
+    "jest-environment-node": "26.6.1",
     "mongoose": "5.10.11",
     "nodemon": "2.0.6",
     "redis": "3.0.2"

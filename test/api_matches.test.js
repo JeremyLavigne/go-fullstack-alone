@@ -4,9 +4,9 @@ const app = require('../app');
 
 /* Mock database */
 const client = redis.createClient();
-const mockMatches = { teamHome: 'Chelsea', teamAway: 'Man U' };
+const mockMatch = { teamHome: 'Chelsea', teamAway: 'Man U' };
 
-client.hmset('test-match', mockMatches, (err) => {
+client.hmset('match-test', mockMatch, (err) => {
     if (err) { console.log(err); }
 });
 
@@ -24,13 +24,12 @@ test('Matches are returned as json', async () => {
 test('Expected match is returned', async () => {
     const response = await api.get('/api/matches');
 
-    expect(response).toBe(mockMatches);
-    // console.log(data);
-    // expect(data.teamHome).toBe('Chelsea');
-    // expect(data.teamAway).toBe('Man U');
+    const expected = { key: 'match-test', match: mockMatch };
+
+    expect(response.body[0]).toMatchObject(expected);
 });
 
-afterAll(async () => {
-    await client.flushall();
+afterAll(() => {
+    client.flushall();
     client.quit();
 });
