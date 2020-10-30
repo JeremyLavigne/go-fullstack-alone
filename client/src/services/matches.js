@@ -1,11 +1,11 @@
-import axios from 'axios'
+import axios from 'axios';
 
-const baseUrl = 'api/matches'
+const baseUrl = 'api/matches';
 
 const getAll = async () => {
-  const request = axios.get(baseUrl)
-  const response = await request
-    return response.data
-}
+    const request = axios.get(baseUrl);
+    const response = await request;
+    return response.data;
+};
 
-export default { getAll }
+export default { getAll };

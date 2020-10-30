@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const MatchLine = (match) => {
+const MatchLine = (obj) => {
+    const { match } = obj.match; // One rank below..
 
-    match = match.match; // One rank below..
+    const lineStyle = {
+        display: 'flex',
+    };
 
     return (
         <div>
@@ -15,13 +18,9 @@ const MatchLine = (match) => {
                 <p>O/U</p>
                 <button>{match.oddOver}</button>
                 <button>{match.oddUnder}</button>
-            </div>            
+            </div>
         </div>
-    )
+    );
 };
 
 export default MatchLine;
-
-const lineStyle = {
-    display: 'flex'
-}

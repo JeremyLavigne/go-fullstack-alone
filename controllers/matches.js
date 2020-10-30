@@ -1,26 +1,21 @@
 const client = require('redis').createClient(process.env.REDIS_URL);
 const async = require('async');
 
-
-exports.getAllMatches = async (req, res, next) => {
-
-    client.keys('match-*', function (err, keys) {
-        if(err){ res.status(400).json(err); }
-        if(keys){
-            
-            async.map(keys, function(key, cb) {
-               client.HGETALL(key, function (error, match) {
-                    if(err){ res.status(400).json(err); }
-                    cb(null, {key: key, match});
-                }); 
-                
-            }, function (err, matches) {
-                if(err){ res.status(400).json(err); }
+exports.getAllMatches = async (req, res) => {
+    client.keys('match-*', (err, keys) => {
+        if (err) { res.status(400).json(err); }
+        if (keys) {
+            async.map(keys, (key, cb) => {
+                client.HGETALL(key, (error, match) => {
+                    if (err) { res.status(400).json(err); }
+                    cb(null, { key, match });
+                });
+            }, (error, matches) => {
+                if (error) { res.status(400).json(err); }
                 res.send(matches); // Send as an Array [m1, m2, m3]
             });
         }
     });
-
 };
 
 // ============================= Fill the database - POST ==========================
@@ -51,11 +46,11 @@ exports.getAllMatches = async (req, res, next) => {
 // client.keys('match-*', function (err, keys) {
 //     if(err){ res.status(400).json(err); }
 //     if(keys){
-        
+
 //         async.map(keys, function(key) {
 //            client.del(key, function (error, match) {
 //                 if(err){ console.log(err); }
-//             }); 
-//         });       
+//             });
+//         });
 //     }
 // });

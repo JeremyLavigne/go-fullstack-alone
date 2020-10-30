@@ -10,13 +10,13 @@ const app = express();
 // ---------------------- Redis DB -----------------------
 const client = redis.createClient(process.env.REDIS_URL);
 
-client.on("error", function(error) {
+client.on('error', (error) => {
     console.error(error);
 });
-client.on("connect", function(error) {
-    console.log("Connected to Redis");
+client.on('connect', (error) => {
+    if (error) { console.log(error); }
+    console.log('Connected to Redis');
 });
-
 
 // ---------------------- app.use -----------------------
 app.use(cors());
@@ -27,14 +27,13 @@ const matchesRoutes = require('./routes/matches');
 
 app.use('/api/matches', matchesRoutes);
 
-
 // Deployment
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/dist'))
+    app.use(express.static('client/dist'));
 
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-    })
+    });
 }
 
 module.exports = app;
