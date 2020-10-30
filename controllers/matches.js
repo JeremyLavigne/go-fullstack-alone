@@ -1,4 +1,18 @@
-const client = require('redis').createClient(process.env.REDIS_URL);
+let client;
+const redis = require('redis');
+
+if (process.env.NODE_ENV === 'test') {
+    client = redis.createClient();
+    console.log('Test database');
+} else {
+    client = redis.createClient(process.env.REDIS_URL);
+}
+
+client.on('connect', (error) => {
+    if (error) { console.log(error); }
+    console.log('Connected to Redis');
+});
+
 const async = require('async');
 
 exports.getAllMatches = async (req, res) => {
@@ -12,11 +26,16 @@ exports.getAllMatches = async (req, res) => {
                 });
             }, (error, matches) => {
                 if (error) { res.status(400).json(err); }
-                res.send(matches); // Send as an Array [m1, m2, m3]
+                res.status(200).send(matches); // Send as an Array [m1, m2, m3]
             });
         }
     });
 };
+
+process.on('exit', () => {
+    console.log('client log out.');
+    client.quit();
+});
 
 // ============================= Fill the database - POST ==========================
 

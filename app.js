@@ -1,22 +1,10 @@
 // ---------------------- Variables -----------------------
 const express = require('express');
-const redis = require('redis');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-
-// ---------------------- Redis DB -----------------------
-const client = redis.createClient(process.env.REDIS_URL);
-
-client.on('error', (error) => {
-    console.error(error);
-});
-client.on('connect', (error) => {
-    if (error) { console.log(error); }
-    console.log('Connected to Redis');
-});
 
 // ---------------------- app.use -----------------------
 app.use(cors());
