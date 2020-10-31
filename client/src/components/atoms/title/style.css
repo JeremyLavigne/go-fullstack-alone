@@ -1,0 +1,9 @@
+@import '../../_settings/_variables.css';
+
+.title {
+    color: black;
+}
+
+.odd {
+    font-size: var(--odd-title-size);
+}

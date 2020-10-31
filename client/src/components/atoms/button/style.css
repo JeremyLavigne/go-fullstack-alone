@@ -1,0 +1,10 @@
+@import '../../_settings/_variables.css';
+
+.button {
+    color: white;
+}
+
+.odd {
+    background-color: var(--odd-button-color);
+}
+

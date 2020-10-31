@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import matchesService from '../services/matches';
+import matchesService from './services/matches';
 
-import MatchLine from './MatchLine';
+import MatchLine from './components/molecule/line';
 
 const App = () => {
     const [matches, setMatches] = useState(null);
@@ -17,9 +17,7 @@ const App = () => {
 
     return (
         <div>
-            <button
-                onClick={getAnswerFromDb}
-            >
+            <button onClick={getAnswerFromDb}>
                 Get All Matches.
             </button>
 
