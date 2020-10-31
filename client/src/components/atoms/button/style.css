@@ -2,9 +2,13 @@
 
 .button {
     color: white;
+    margin-right: 10px;
 }
 
-.odd {
+.odd-button {
     background-color: var(--odd-button-color);
 }
 
+.last {
+    margin-right: 30px;
+}

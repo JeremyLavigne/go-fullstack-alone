@@ -1,0 +1,6 @@
+#main-header {
+    width: 100%;
+    min-height: 10vh;
+    border-bottom: 5px groove black;
+    text-align: center;
+}

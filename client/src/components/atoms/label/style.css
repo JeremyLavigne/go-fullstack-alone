@@ -1,0 +1,10 @@
+@import '../../_settings/_variables.css';
+
+.label {
+    border: none;
+    padding-top: 2px;
+}
+
+.odd-label {
+    background-color: white;
+}
