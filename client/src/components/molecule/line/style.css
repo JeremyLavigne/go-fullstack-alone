@@ -9,3 +9,11 @@
 .odd-line {
     display: flex;
 }
+
+#date-title {
+    display: flex;
+}
+
+#date-title p {
+    margin-right: 20px;
+}

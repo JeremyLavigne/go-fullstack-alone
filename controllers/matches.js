@@ -47,11 +47,11 @@ process.on('exit', () => {
 
 // Just put i < 380 to get the whole championship
 
-// for (let i = 0; i < 5; i++) {
-//     const key = `match-PL1718-${i+1}`;
+// for (let i = 0; i < 380; i += 1) {
+//     const key = `match-PL1718-${i + 1}`;
 //     const newMatch = plMatchesList[i];
-//     client.hmset(key, newMatch, function (err, reply){
-//         if(err) { console.log(err); }
+//     client.hmset(key, newMatch, (err) => {
+//         if (err) { console.log(err); }
 //         console.log(key, 'created');
 //     });
 // }
@@ -62,13 +62,12 @@ process.on('exit', () => {
 
 // BE CAREFUL, Uncomment this and save file erase all the matching keys !
 
-// client.keys('match-*', function (err, keys) {
-//     if(err){ res.status(400).json(err); }
-//     if(keys){
-
-//         async.map(keys, function(key) {
-//            client.del(key, function (error, match) {
-//                 if(err){ console.log(err); }
+// client.keys('match-*', (err, keys) => {
+//     if (err) { console.log(err); }
+//     if (keys) {
+//         async.map(keys, (key) => {
+//             client.del(key, (error) => {
+//                 if (err) { console.log(error); }
 //             });
 //         });
 //     }

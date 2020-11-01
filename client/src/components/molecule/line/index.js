@@ -10,7 +10,11 @@ const MatchLine = (obj) => {
 
     return (
         <div className="match-line-bloc">
-            <Title content={`${match.homeTeam} vs. ${match.awayTeam}`} type="match" />
+            <div id="date-title">
+                <p>{match.Date.substr(0, 5)}</p>
+                <Title content={`${match.homeTeam} vs. ${match.awayTeam}`} type="match" />
+            </div>
+
             <div className="odd-line">
                 <div>
                     <Label content="1" type="odd-label" />
