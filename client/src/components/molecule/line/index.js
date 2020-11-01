@@ -14,23 +14,23 @@ const MatchLine = (obj) => {
             <div className="odd-line">
                 <div>
                     <Label content="1" type="odd-label" />
-                    <Button content={match.oddH} type="odd-button" />
+                    <Button content={match.oddH} type="odd-button" onClick={ () => {} } />
                 </div>
                 <div>
                     <Label content="X" type="odd-label" />
-                    <Button content={match.oddD} type="odd-button" />
+                    <Button content={match.oddD} type="odd-button" onClick={ () => {} } />
                 </div>
                 <div>
                     <Label content="2" type="odd-label" />
-                    <Button content={match.oddA} type="odd-button last" />
+                    <Button content={match.oddA} type="odd-button last" onClick={ () => {} } />
                 </div>
                 <div>
                     <Label content="Over 2,5" type="odd-label" />
-                    <Button content={match.oddOver} type="odd-button" />
+                    <Button content={match.oddOver} type="odd-button" onClick={ () => {} } />
                 </div>
                 <div>
                     <Label content="Under 2,5" type="odd-label" />
-                    <Button content={match.oddUnder} type="odd-button" />
+                    <Button content={match.oddUnder} type="odd-button" onClick={ () => {} } />
                 </div>
             </div>
         </div>

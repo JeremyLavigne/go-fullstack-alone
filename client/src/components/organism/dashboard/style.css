@@ -1,0 +1,13 @@
+@import '../../_settings/_variables.css';
+
+#dashboard {
+    width: 25%;
+    border-right: 2px solid var(--success);
+    text-align: center;
+    margin-right: 20px;
+}
+
+#active-week {
+    display: flex;
+    justify-content: center;
+}

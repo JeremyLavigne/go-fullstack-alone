@@ -6,6 +6,7 @@ import './App.css';
 import MatchLine from '../molecule/line';
 import Header from '../organism/header';
 import Footer from '../organism/footer';
+import DashBoard from '../organism/dashboard';
 
 const App = () => {
     const [matches, setMatches] = useState(null);
@@ -24,10 +25,13 @@ const App = () => {
             <Header />
 
             <section className='main-section'>
-                {matches
-                    ? matches.map((obj) => <MatchLine key={obj.key} obj={obj.match} />)
-                    : null
-                }
+                <DashBoard />
+                <div>
+                    {matches
+                        ? matches.map((obj) => <MatchLine key={obj.key} obj={obj.match} />)
+                        : null
+                    }
+                </div>
             </section>
 
             <Footer />

@@ -3,6 +3,7 @@
 .button {
     color: white;
     margin-right: 10px;
+    margin-left: 5px;
 }
 
 .odd-button {
@@ -11,4 +12,8 @@
 
 .last {
     margin-right: 30px;
+}
+
+.arrow {
+    background-color: black;
 }
