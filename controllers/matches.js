@@ -10,10 +10,12 @@ if (process.env.NODE_ENV === 'test') {
 
 client.on('connect', (error) => {
     if (error) { console.log(error); }
-    console.log('Connected to Redis');
+    console.log('Connected to Redis (Matches)');
 });
 
 const async = require('async');
+
+// Routes
 
 exports.getAllMatches = async (req, res) => {
     client.keys('match-*', (err, keys) => {
@@ -21,7 +23,7 @@ exports.getAllMatches = async (req, res) => {
         if (keys) {
             async.map(keys, (key, cb) => {
                 client.HGETALL(key, (error, match) => {
-                    if (err) { res.status(400).json(err); }
+                    if (error) { res.status(400).json(error); }
                     cb(null, { key, match });
                 });
             }, (error, matches) => {

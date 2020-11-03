@@ -12,8 +12,10 @@ app.use(bodyParser.json());
 
 // Routes
 const matchesRoutes = require('./routes/matches');
+const userRoutes = require('./routes/users');
 
 app.use('/api/matches', matchesRoutes);
+app.use('/api/auth', userRoutes);
 
 // Deployment
 if (process.env.NODE_ENV === 'production') {
