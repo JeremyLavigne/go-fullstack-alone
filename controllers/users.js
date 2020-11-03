@@ -22,7 +22,7 @@ const generateID = () => Math.floor(Math.random() * Math.floor(1000000));
 
 // Routes
 
-exports.signup = (req) => {
+exports.signup = (req, res) => {
     let user;
     bcrypt.hash(req.body.password, 10)
         .then((hash) => {
@@ -36,6 +36,7 @@ exports.signup = (req) => {
             client.hmset(key, user, (err) => {
                 if (err) { console.log(err); }
                 console.log(key, 'created');
+                res.status(201).json({ mess: 'User has been created' });
             });
         });
 };
