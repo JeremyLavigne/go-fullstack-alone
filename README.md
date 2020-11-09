@@ -1,4 +1,3 @@
-### go-fullstack-alone
+### Project in 'pause'
 
-
-See https://warm-peak-38704.herokuapp.com
+Considering at the moment this project as a sandbox, used to figure out how to manage a full stack application : Set up, tools, folder structure, etc..
